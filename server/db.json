@@ -1,0 +1,45 @@
+{
+    "bancos": [{
+        "id": 1,
+        "nombre": "Zinobe",
+        "capital": 1000000000
+    }],
+    "tipos-identificacion": [{
+            "id": 1,
+            "tipo": "Cédula de Ciudadanía"
+        },
+        {
+            "id": 2,
+            "tipo": "Nit"
+        },
+        {
+            "id": 3,
+            "tipo": "Pasaporte"
+        }
+    ],
+    "tipos-creditos": [{
+            "id": 1,
+            "id_banco": 1,
+            "tipo": "Libre Inversión",
+            "valor_minimo": 5000000,
+            "valor_maximo": 20000000
+        },
+        {
+            "id": 2,
+            "id_banco": 1,
+            "tipo": "Vivienda",
+            "valor_minimo": 3000000,
+            "valor_maximo": 25000000
+        },
+        {
+            "id": 3,
+            "id_banco": 1,
+            "tipo": "Crédito de emergencia",
+            "valor_minimo": 1000000,
+            "valor_maximo": 3000000
+        }
+    ],
+    "clientes": [],
+    "creditos": [],
+    "pagos-creditos": []
+}
