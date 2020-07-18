@@ -10,7 +10,7 @@ import { SidebarComponent } from '../../common/components/sidebar/sidebar.compon
   declarations: [
     AdministradorComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     CommonModule,
