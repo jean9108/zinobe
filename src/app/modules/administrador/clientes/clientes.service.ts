@@ -10,7 +10,6 @@ export class ClientesService {
   ) {}
 
   registrar(cliente: Cliente): Observable<any> {
-    console.log(cliente);
     return this.http.post('/clientes', cliente);
   }
 
@@ -18,8 +17,8 @@ export class ClientesService {
     return this.http.get<Cliente[]>('/clientes');
   }
 
-  editar(cliente: Cliente): Observable<any> {
-    return this.http.put('/clientes', cliente);
+  editar(cliente: Cliente, id: number): Observable<any> {
+    return this.http.put('/clientes/' + id, cliente);
   }
 
   eliminar(id: number): Observable<any> {

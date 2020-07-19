@@ -1,0 +1,136 @@
+{
+    "menus": [{
+        "id": 1,
+        "nombre": "Clientes",
+        "url": "/clientes",
+        "id_padre": ""
+    }, {
+        "id": 2,
+        "nombre": "Creditos",
+        "url": "/creditos",
+        "id_padre": ""
+    }],
+    "bancos": [{
+        "id": 1,
+        "nombre": "Zinobe",
+        "capital": 1000000000
+    }],
+    "tipos-identificacion": [{
+            "id": 1,
+            "tipo": "Cédula de Ciudadanía"
+        },
+        {
+            "id": 2,
+            "tipo": "Nit"
+        },
+        {
+            "id": 3,
+            "tipo": "Pasaporte"
+        }
+    ],
+    "tipos-creditos": [{
+            "id": 1,
+            "id_banco": 1,
+            "tipo": "Libre Inversión",
+            "valor_minimo": 5000000,
+            "valor_maximo": 20000000
+        },
+        {
+            "id": 2,
+            "id_banco": 1,
+            "tipo": "Vivienda",
+            "valor_minimo": 3000000,
+            "valor_maximo": 25000000
+        },
+        {
+            "id": 3,
+            "id_banco": 1,
+            "tipo": "Crédito de emergencia",
+            "valor_minimo": 1000000,
+            "valor_maximo": 3000000
+        }
+    ],
+    "clientes": [{
+            "nombres": "Pepita",
+            "apellidos": "Lopez",
+            "id_tipo_identificacion": "1",
+            "email": "a@a.com",
+            "identificacion": "1111111111",
+            "id": 1
+        },
+        {
+            "nombres": "Joana Marcela",
+            "apellidos": "Garcia",
+            "id_tipo_identificacion": "1",
+            "email": "joanamar_9108@hotmail.com",
+            "identificacion": "1031133789",
+            "id": 2
+        },
+        {
+            "nombres": "Juana",
+            "apellidos": "Lopez",
+            "id_tipo_identificacion": "1",
+            "email": "juana@gmail.com",
+            "identificacion": "80741502",
+            "id": 3
+        },
+        {
+            "nombres": "Yenny Paola",
+            "apellidos": "Lopez Meneses",
+            "id_tipo_identificacion": "3",
+            "email": "supremapolita@hotmail.com",
+            "identificacion": "PAP12345",
+            "id": 4
+        },
+        {
+            "nombres": "Mauricio Rivera",
+            "apellidos": "Franco",
+            "id_tipo_identificacion": "1",
+            "email": "mauriver21@gmail.com",
+            "identificacion": "107274",
+            "id": 5
+        },
+        {
+            "nombres": "Mauricio",
+            "apellidos": "Rivera",
+            "id_tipo_identificacion": "1",
+            "email": "mauriver21@gmail.com",
+            "identificacion": "1072748306",
+            "id": 6
+        },
+        {
+            "nombres": "Mauricio",
+            "apellidos": "Rivera",
+            "id_tipo_identificacion": "1",
+            "email": "mauriver21@gmail.com",
+            "identificacion": "123456",
+            "id": 7
+        },
+        {
+            "nombres": "Mauricio",
+            "apellidos": "Rivera",
+            "id_tipo_identificacion": "1",
+            "email": "mauriver21@gmail.com",
+            "identificacion": "123456",
+            "id": 8
+        },
+        {
+            "nombres": "Mauricio",
+            "apellidos": "Rivera",
+            "id_tipo_identificacion": "1",
+            "email": "mauriver21@gmail.com",
+            "identificacion": "1072748306",
+            "id": 9
+        },
+        {
+            "nombres": "Joana Marcela",
+            "apellidos": "Garcia M",
+            "id_tipo_identificacion": "1",
+            "email": "joana9108@gmail.com",
+            "identificacion": "1031133789",
+            "id": 10
+        }
+    ],
+    "creditos": [],
+    "pagos-creditos": []
+}

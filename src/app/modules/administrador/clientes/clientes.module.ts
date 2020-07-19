@@ -9,6 +9,7 @@ import { ClientesEditarComponent } from './clientes-editar/clientes-editar.compo
 import { ClientesFormularioComponent } from './clientes-formulario/clientes-formulario.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ClientesService } from './clientes.service';
+import { SpinnerComponent } from '../../../common/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ClientesService } from './clientes.service';
     ClientesRegistrarComponent,
     ClientesListarComponent,
     ClientesEditarComponent,
-    ClientesFormularioComponent
+    ClientesFormularioComponent,
+    SpinnerComponent
   ],
   imports: [
     CommonModule,

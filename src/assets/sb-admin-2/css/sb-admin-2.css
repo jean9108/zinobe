@@ -4786,6 +4786,28 @@ input[type="button"].btn-block {
     border-bottom-left-radius: calc(0.35rem - 1px);
 }
 
+.card-body-wrapper {
+    position: relative;
+}
+
+.table-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.table-wrapper .dataTables_info {
+    margin-top: 14px !important;
+}
+
+.table-wrapper .dataTables_paginate {
+    margin-top: 20px !important;
+}
+
+.table-wrapper table td,
+th {
+    vertical-align: middle;
+}
+
 .card-body {
     flex: 1 1 auto;
     min-height: 1px;
@@ -10659,6 +10681,7 @@ a:focus {
 .sidebar {
     width: 6.5rem;
     min-height: 100vh;
+    height: 100%;
 }
 
 .sidebar .nav-item {

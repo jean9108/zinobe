@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Cliente } from './cliente';
 import { ClientesFormularioService } from './clientes-formulario.service';
 import { TiposIdentificacion } from '../../../../common/interfaces/tipos-identificacion';
@@ -9,15 +9,9 @@ import { TiposIdentificacion } from '../../../../common/interfaces/tipos-identif
   templateUrl: './clientes-formulario.component.html',
   providers: [ClientesFormularioService]
 })
-export class ClientesFormularioComponent implements OnInit {
+export class ClientesFormularioComponent implements OnInit, OnChanges {
 
-  @Input() cliente: Cliente = {
-    nombres: '',
-    apellidos: '',
-    id_tipo_identificacion: '',
-    email: '',
-    identificacion: ''
-  };
+  @Input() cliente: Cliente;
   @Output() clienteFormulario = new EventEmitter<Cliente>();
   public clientesFormulario: FormGroup;
   public tiposIdentificacion: TiposIdentificacion;
@@ -31,33 +25,51 @@ export class ClientesFormularioComponent implements OnInit {
     this.getTipoIdentificacion();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    for (const prop in changes) {
+      if (prop === 'cliente') {
+        this.cliente = changes[prop].currentValue;
+        this.cargarDatosFormulario();
+      }
+    }
+  }
+
+  cargarDatosFormulario(): void {
+    if (this.cliente !== undefined) { 
+      this.clientesFormulario.setValue(this.cliente);
+    }
+  }
+
   construirFormulario(): void {
     this.clientesFormulario = new FormBuilder().group(
       {
+        id: [
+          ''
+        ],
         nombres: [
-          this.cliente.nombres,
+          '',
           {
             validators: [
               Validators.required,
               Validators.minLength(3),
               Validators.maxLength(40),
-              Validators.pattern('^[A-Z a-z]*$')
+              Validators.pattern('^[A-Z a-zÀ-ÿ]*$')
             ]
           }
-        ] ,
+        ],
         apellidos: [
-          this.cliente.apellidos,
+          '',
           {
             validators: [
               Validators.required,
               Validators.minLength(3),
               Validators.maxLength(40),
-              Validators.pattern('^[A-Z a-z]*$')
+              Validators.pattern('^[A-Z a-zÀ-ÿ]*$')
             ]
           }
         ],
         id_tipo_identificacion: [
-          this.cliente.id_tipo_identificacion,
+          '',
           {
             validators: [
               Validators.required,
@@ -66,7 +78,7 @@ export class ClientesFormularioComponent implements OnInit {
           }
         ],
         email: [
-          this.cliente.email,
+          '',
           {
             validators: [
               Validators.required,
@@ -75,7 +87,7 @@ export class ClientesFormularioComponent implements OnInit {
           }
         ],
         identificacion: [
-          this.cliente.identificacion,
+          '',
           {
             validators: [
               Validators.required,
