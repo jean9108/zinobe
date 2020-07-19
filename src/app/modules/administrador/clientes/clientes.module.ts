@@ -10,6 +10,7 @@ import { ClientesFormularioComponent } from './clientes-formulario/clientes-form
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ClientesService } from './clientes.service';
 import { SpinnerComponent } from '../../../common/components/spinner/spinner.component';
+import { ModalComponent } from '../../../common/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SpinnerComponent } from '../../../common/components/spinner/spinner.com
     ClientesListarComponent,
     ClientesEditarComponent,
     ClientesFormularioComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

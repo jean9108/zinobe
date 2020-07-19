@@ -1,1 +1,30 @@
-<p>creditos-generar works!</p>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Registrar un nuevo Credito</h6>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="creditosFormulario" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="id_cliente">Número de identificación del cliente:</label>
+                <!--<input formControlName="id_cliente" />-->
+                <ng-select (search)="getBusquedas($event)" [items]="clientes" bindLabel="nombre" autofocus bindValue="id" formControlName="id_cliente"></ng-select>
+                <!--<ng-select [items]="clientes" bindLabel="title" dropdownPosition="auto" bindValue="id" labelForId="nombres" placeholder="Selecciona el cliente" [virtualScroll]="true" formControlName="id_cliente">
+                    <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                        <div><span>Nombre </span><span>{{item.nombres}}</span></div>
+                        <small><b>Id:</b> {{item.identificacion}} | <b>UserId:</b> {{item.id_tipo_identificacion}}</small>
+                    </ng-template>
+                </ng-select>-->
+            </div>
+            <!--div class="form-group">
+                <label for="nombres">Nombres:</label>
+                <input type="text" class="form-control" id="nombres" formControlName="nombres" [ngClass]="{ 'is-invalid': form.nombres.invalid && (form.nombres.dirty || form.nombres.touched)}">
+                <div *ngIf="form.nombres.errors" class="invalid-feedback">
+                    <div *ngIf="form.nombres.hasError('required')">El nombre no puede estar vacío</div>
+                    <div *ngIf="form.nombres.hasError('pattern')">Nombre Inválido</div>
+                    <div *ngIf="form.nombres.hasError('minlength') && !form.nombres.hasError('required') && !form.nombres.hasError('pattern')">El nombre debe contener mínimo 3 caracteres</div>
+                    <div *ngIf="form.nombres.hasError('maxlength') && !form.nombres.hasError('pattern')">Ha superado la cantidad de caracteres para el nombre</div>
+                </div>
+            </div-->
+        </form>
+    </div>
+</div>

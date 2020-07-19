@@ -6,13 +6,22 @@ import { CreditosComponent } from './creditos.component';
 import { CreditosGenerarComponent } from './creditos-generar/creditos-generar.component';
 import { CreditosAprobadosComponent } from './creditos-aprobados/creditos-aprobados.component';
 import { CreditosRechazadosComponent } from './creditos-rechazados/creditos-rechazados.component';
-
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  declarations: [CreditosComponent, CreditosGenerarComponent, CreditosAprobadosComponent, CreditosRechazadosComponent],
+  declarations: [
+    CreditosComponent,
+    CreditosGenerarComponent,
+    CreditosAprobadosComponent,
+    CreditosRechazadosComponent
+  ],
   imports: [
     CommonModule,
-    CreditosRoutingModule
+    CreditosRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgSelectModule
   ]
 })
 export class CreditosModule { }

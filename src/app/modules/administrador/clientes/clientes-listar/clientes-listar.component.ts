@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cliente } from '../clientes-formulario/cliente';
+import { ModalComponent } from '../../../../common/components/modal/modal.component';
+import { Cliente } from '../../../../common/interfaces/cliente';
 import { ClientesService } from '../clientes.service';
 import environment from 'src/app/common/environment';
 import $ from 'jquery';
@@ -10,6 +11,7 @@ declare var $: $;
 @Component({
   selector: 'app-clientes-listar',
   template: `
+  <app-modal #modal></app-modal>
     <div class="card shadow mb-4">
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Clientes registrados</h6>
@@ -31,6 +33,7 @@ export class ClientesListarComponent implements OnInit, AfterViewInit {
   public clientes: Cliente[];
   public clientesTabla: any;
   public cargandoTabla: boolean;
+  @ViewChild('modal') modal: ModalComponent;
 
   constructor(
     private clientesService: ClientesService,
@@ -47,8 +50,6 @@ export class ClientesListarComponent implements OnInit, AfterViewInit {
   cargarClientes() {
     this.clientesService.listar().subscribe((response) => {
       this.clientes = response;
-      this.clientesTabla.draw();
-
       this.clientesTabla.clear().draw();
       this.clientesTabla.rows.add(this.clientes);
       this.clientesTabla.columns.adjust().draw();
@@ -89,7 +90,7 @@ export class ClientesListarComponent implements OnInit, AfterViewInit {
           });
 
           botonEliminar.on('click', () => {
-            this.eliminarCliente(data.id);
+            this.eliminarCliente(data.id, row);
           });
         }
       }
@@ -100,11 +101,18 @@ export class ClientesListarComponent implements OnInit, AfterViewInit {
     this.router.navigate(['administrador/clientes/actualizar/' + id]);
   }
 
-  eliminarCliente(id): void {
-    this.cargandoTabla = true;
-    this.clientesService.eliminar(id).subscribe((response) => {
-      this.cargarClientes();
-      this.cargandoTabla = false;
+  eliminarCliente(id, row): void {
+    this.modal.show();
+    this.modal.setTitle('Aviso de confirmación');
+    this.modal.setMessage('¿Está seguro de eliminar este registro?');
+
+    this.modal.accept(() => {
+      this.cargandoTabla = true;
+      this.clientesService.eliminar(id).subscribe((response) => {
+        this.clientesTabla.row($(row)).remove().draw(false);
+        this.cargandoTabla = false;
+        this.modal.hide();
+      });
     });
   }
 }

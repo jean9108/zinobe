@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Cliente } from './cliente';
+import { Cliente } from '../../../../common/interfaces/cliente';
 import { ClientesFormularioService } from './clientes-formulario.service';
 import { TiposIdentificacion } from '../../../../common/interfaces/tipos-identificacion';
 
@@ -35,7 +35,7 @@ export class ClientesFormularioComponent implements OnInit, OnChanges {
   }
 
   cargarDatosFormulario(): void {
-    if (this.cliente !== undefined) { 
+    if (this.cliente !== undefined) {
       this.clientesFormulario.setValue(this.cliente);
     }
   }

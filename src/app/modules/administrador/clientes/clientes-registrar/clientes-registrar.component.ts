@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Cliente } from '../clientes-formulario/cliente';
+import { Cliente } from '../../../../common/interfaces/cliente';
 import { ClientesService } from '../clientes.service';
 
 @Component({
@@ -10,6 +10,9 @@ import { ClientesService } from '../clientes.service';
           <h6 class="m-0 font-weight-bold text-primary">Registrar nuevo cliente</h6>
       </div>
       <div class="card-body">
+          <a class="btn btn-primary mb-4" [routerLink]="['/administrador/clientes']">
+            <i class="fa-address-book fas"></i> Ver clientes
+          </a>
           <app-clientes-formulario (clienteFormulario)=registrarCliente($event)></app-clientes-formulario>
           <div *ngIf="successMessage" class="card bg-success text-white shadow">
             <div class="card-body">

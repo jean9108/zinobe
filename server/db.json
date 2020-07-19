@@ -1,192 +1,192 @@
 {
-    "menus": [{
-            "nombre": "Clientes",
-            "icon": "fas fa-users",
-            "url": "",
-            "submenu": [{
-                    "nombre": "Ver Clientes",
-                    "icon": "fas fa-address-book",
-                    "url": "clientes"
-                },
-                {
-                    "nombre": "Registrar Cliente",
-                    "icon": "fas fa-user-plus",
-                    "url": "clientes/registrar"
-                }
-            ]
+  "menus": [
+    {
+      "nombre": "Clientes",
+      "icon": "fas fa-users",
+      "url": "",
+      "submenu": [
+        {
+          "nombre": "Ver Clientes",
+          "icon": "fas fa-address-book",
+          "url": "clientes"
         },
         {
-            "nombre": "Creditos",
-            "icon": "fas fa-funnel-dollar",
-            "url": "creditos",
-            "submenu": [{
-                    "nombre": "Solicitud de Credito",
-                    "icon": "fas fa-money-check-alt",
-                    "url": ""
-                },
-                {
-                    "nombre": "Créditos Aprobados",
-                    "icon": "fas fa-user-check",
-                    "url": "creditos"
-                },
-                {
-                    "nombre": "Créditos Rechazados",
-                    "icon": "fas fa-user-times",
-                    "url": "creditos"
-                },
-                {
-                    "nombre": "Ver Creditos",
-                    "icon": "fas fa-file-invoice-dollar",
-                    "url": "creditos"
-                }
-            ]
+          "nombre": "Registrar Cliente",
+          "icon": "fas fa-user-plus",
+          "url": "clientes/registrar"
         }
-    ],
-    "bancos": [{
-        "id": 1,
-        "nombre": "Zinobe",
-        "capital": 1000000000
-    }],
-    "tipos-identificacion": [{
-            "id": 1,
-            "tipo": "Cédula de Ciudadanía"
+      ]
+    },
+    {
+      "nombre": "Creditos",
+      "icon": "fas fa-funnel-dollar",
+      "url": "creditos",
+      "submenu": [
+        {
+          "nombre": "Solicitud de Credito",
+          "icon": "fas fa-money-check-alt",
+          "url": "creditos"
         },
         {
-            "id": 2,
-            "tipo": "Nit"
+          "nombre": "Créditos Aprobados",
+          "icon": "fas fa-user-check",
+          "url": "creditos/aprobados"
         },
         {
-            "id": 3,
-            "tipo": "Pasaporte"
+          "nombre": "Créditos Rechazados",
+          "icon": "fas fa-user-times",
+          "url": "creditos/rechazados"
+        },
+        {
+          "nombre": "Ver Creditos",
+          "icon": "fas fa-file-invoice-dollar",
+          "url": "creditos/aprobados"
         }
-    ],
-    "tipos-creditos": [{
-            "id": 1,
-            "id_banco": 1,
-            "tipo": "Libre Inversión",
-            "valor_minimo": 5000000,
-            "valor_maximo": 20000000
-        },
-        {
-            "id": 2,
-            "id_banco": 1,
-            "tipo": "Vivienda",
-            "valor_minimo": 3000000,
-            "valor_maximo": 25000000
-        },
-        {
-            "id": 3,
-            "id_banco": 1,
-            "tipo": "Crédito de emergencia",
-            "valor_minimo": 1000000,
-            "valor_maximo": 3000000
-        }
-    ],
-    "clientes": [{
-            "nombres": "Joana Marcela",
-            "apellidos": "Garcia",
-            "id_tipo_identificacion": "1",
-            "email": "joanamar_9108@hotmail.com",
-            "identificacion": "1031133789",
-            "id": 2
-        },
-        {
-            "nombres": "Juana",
-            "apellidos": "Lopez",
-            "id_tipo_identificacion": "1",
-            "email": "juana@gmail.com",
-            "identificacion": "80741502",
-            "id": 3
-        },
-        {
-            "nombres": "Mauricio Rivera",
-            "apellidos": "Franco",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "107274",
-            "id": 5
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "123456",
-            "id": 7
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "123456",
-            "id": 8
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "1072748306",
-            "id": 9
-        },
-        {
-            "nombres": "Joana Marcela",
-            "apellidos": "Garcia M",
-            "id_tipo_identificacion": "1",
-            "email": "joana9108@gmail.com",
-            "identificacion": "1031133789",
-            "id": 10
-        },
-        {
-            "id": 11,
-            "nombres": "Andrea",
-            "apellidos": "Torres",
-            "id_tipo_identificacion": "1",
-            "email": "andrea@gmail.com",
-            "identificacion": "122122"
-        },
-        {
-            "id": 12,
-            "nombres": "José",
-            "apellidos": "Rodríguez",
-            "id_tipo_identificacion": "1",
-            "email": "jose@gmail.com",
-            "identificacion": "123456"
-        },
-        {
-            "id": 13,
-            "nombres": "Laura",
-            "apellidos": "Torres",
-            "id_tipo_identificacion": "1",
-            "email": "la@gmail.com",
-            "identificacion": "123123"
-        },
-        {
-            "id": 14,
-            "nombres": "José",
-            "apellidos": "Contreras",
-            "id_tipo_identificacion": "1",
-            "email": "jose@gmail.com",
-            "identificacion": "222121"
-        },
-        {
-            "id": 15,
-            "nombres": "Francisco",
-            "apellidos": "Rojas",
-            "id_tipo_identificacion": "1",
-            "email": "pacho@123.com",
-            "identificacion": "12312321"
-        },
-        {
-            "id": 16,
-            "nombres": "Laura",
-            "apellidos": "Martínez",
-            "id_tipo_identificacion": "1",
-            "email": "lau@gmail.com",
-            "identificacion": "21312313"
-        }
-    ],
-    "creditos": [],
-    "pagos-creditos": []
+      ]
+    }
+  ],
+  "bancos": [
+    {
+      "id": 1,
+      "nombre": "Zinobe",
+      "capital": 1000000000
+    }
+  ],
+  "tipos-identificacion": [
+    {
+      "id": 1,
+      "tipo": "Cédula de Ciudadanía"
+    },
+    {
+      "id": 2,
+      "tipo": "Nit"
+    },
+    {
+      "id": 3,
+      "tipo": "Pasaporte"
+    }
+  ],
+  "tipos-creditos": [
+    {
+      "id": 1,
+      "id_banco": 1,
+      "tipo": "Libre Inversión",
+      "valor_minimo": 5000000,
+      "valor_maximo": 20000000
+    },
+    {
+      "id": 2,
+      "id_banco": 1,
+      "tipo": "Vivienda",
+      "valor_minimo": 3000000,
+      "valor_maximo": 25000000
+    },
+    {
+      "id": 3,
+      "id_banco": 1,
+      "tipo": "Crédito de emergencia",
+      "valor_minimo": 1000000,
+      "valor_maximo": 3000000
+    }
+  ],
+  "clientes": [
+    {
+      "nombres": "Joana Marcela",
+      "apellidos": "Garcia",
+      "id_tipo_identificacion": "1",
+      "email": "joanamar_9108@hotmail.com",
+      "identificacion": "1031133789",
+      "id": 2
+    },
+    {
+      "nombres": "Juana",
+      "apellidos": "Lopez",
+      "id_tipo_identificacion": "1",
+      "email": "juana@gmail.com",
+      "identificacion": "80741502",
+      "id": 3
+    },
+    {
+      "nombres": "Mauricio Rivera",
+      "apellidos": "Franco",
+      "id_tipo_identificacion": "1",
+      "email": "mauriver21@gmail.com",
+      "identificacion": "107274",
+      "id": 5
+    },
+    {
+      "id": 11,
+      "nombres": "Andrea",
+      "apellidos": "Torres",
+      "id_tipo_identificacion": "1",
+      "email": "andrea@gmail.com",
+      "identificacion": "122122"
+    },
+    {
+      "id": 12,
+      "nombres": "José",
+      "apellidos": "Rodríguez",
+      "id_tipo_identificacion": "1",
+      "email": "jose@gmail.com",
+      "identificacion": "123456"
+    },
+    {
+      "id": 13,
+      "nombres": "Laura",
+      "apellidos": "Torres",
+      "id_tipo_identificacion": "1",
+      "email": "la@gmail.com",
+      "identificacion": "123123"
+    },
+    {
+      "id": 15,
+      "nombres": "Test",
+      "apellidos": "Test",
+      "id_tipo_identificacion": "1",
+      "email": "test@test.com",
+      "identificacion": "1122212"
+    },
+    {
+      "id": 16,
+      "nombres": "Test",
+      "apellidos": "Test",
+      "id_tipo_identificacion": "1",
+      "email": "test@test.com",
+      "identificacion": "123456"
+    },
+    {
+      "id": 17,
+      "nombres": "Test",
+      "apellidos": "Test",
+      "id_tipo_identificacion": "1",
+      "email": "test@test.com",
+      "identificacion": "123456"
+    },
+    {
+      "id": 18,
+      "nombres": "Test",
+      "apellidos": "Test",
+      "id_tipo_identificacion": "1",
+      "email": "test@test.com",
+      "identificacion": "123456"
+    },
+    {
+      "id": 19,
+      "nombres": "Test",
+      "apellidos": "Test",
+      "id_tipo_identificacion": "1",
+      "email": "test@test.com",
+      "identificacion": "123456"
+    },
+    {
+      "id": 20,
+      "nombres": "Julian",
+      "apellidos": "Gomez",
+      "id_tipo_identificacion": "1",
+      "email": "iguanodontecazador@gmail.com",
+      "identificacion": "123456789"
+    }
+  ],
+  "creditos": [],
+  "pagos-creditos": []
 }
