@@ -1,0 +1,57 @@
+<form [formGroup]="clientesFormulario" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="nombres">Nombres:</label>
+        <input type="text" class="form-control" id="nombres" formControlName="nombres" [ngClass]="{ 'is-invalid': form.nombres.invalid && (form.nombres.dirty || form.nombres.touched)}">
+        <div *ngIf="form.nombres.errors" class="invalid-feedback">
+            <div *ngIf="form.nombres.hasError('required')">El nombre no puede estar vacío</div>
+            <div *ngIf="form.nombres.hasError('pattern')">Nombre Inválido</div>
+            <div *ngIf="form.nombres.hasError('minlength') && !form.nombres.hasError('required') && !form.nombres.hasError('pattern')">El nombre debe contener mínimo 3 caracteres</div>
+            <div *ngIf="form.nombres.hasError('maxlength') && !form.nombres.hasError('pattern')">Ha superado la cantidad de caracteres para el nombre</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" class="form-control" id="apellidos" formControlName="apellidos" [ngClass]="{ 'is-invalid': form.apellidos.invalid && (form.apellidos.dirty || form.apellidos.touched)}">
+        <div *ngIf="form.apellidos.errors" class="invalid-feedback">
+            <div *ngIf="form.apellidos.hasError('required')">El apellido no puede estar vacío</div>
+            <div *ngIf="form.apellidos.hasError('pattern')">Apellido Inválido</div>
+            <div *ngIf="form.apellidos.hasError('minlength') && !form.apellidos.hasError('required') && !form.apellidos.hasError('pattern')"> El apellido debe contener mínimo 3 caracteres</div>
+            <div *ngIf="form.apellidos.hasError('maxlength') && !form.apellidos.hasError('pattern')">Ha superado la cantidad de caracteres para el apellido</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" formControlName="email" [ngClass]="{ 'is-invalid': form.email.invalid && (form.email.dirty || form.email.touched)}">
+        <div *ngIf="form.email.errors" class="invalid-feedback">
+            <div *ngIf="form.email.hasError('required')">El email no puede ser vacío</div>
+            <div *ngIf="form.email.hasError('email')">Email Inválido</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_tipo_identificacion">Tipo de Identificación:</label>
+        <select class="form-control custom-select" formControlName="id_tipo_identificacion" id="id_tipo_identificacion" [ngClass]="{ 'is-invalid': form.id_tipo_identificacion.invalid && (form.id_tipo_identificacion.dirty || form.id_tipo_identificacion.touched)}"
+            [attr.disabled]="(tiposIdentificacion === undefined ? true : undefined)">
+      <option value='' selected>Seleccionar</option>
+      <option *ngFor='let tipoIdentificacion of tiposIdentificacion' value="{{tipoIdentificacion.id}}">
+        {{tipoIdentificacion.tipo}}
+      </option>
+    </select>
+        <div *ngIf="form.id_tipo_identificacion.errors" class="invalid-feedback">
+            <div *ngIf="form.id_tipo_identificacion.hasError('required')">El tipo de Identificación no puede ser vacía</div>
+            <div *ngIf="form.id_tipo_identificacion.hasError('pattern')">Tipo de Identificación Inválida</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="identificacion">Identificación: </label>
+        <input type="text" class="form-control" id="identificacion" formControlName="identificacion" [ngClass]="{ 'is-invalid': form.identificacion.invalid && (form.identificacion.dirty || form.identificacion.touched)}">
+        <div *ngIf="form.identificacion.errors" class="invalid-feedback">
+            <div *ngIf="form.identificacion.hasError('required')">La identificación no puede estar vacía</div>
+            <div *ngIf="form.identificacion.hasError('pattern')">Identificación Inválida</div>
+            <div *ngIf="form.apellidos.hasError('minlength') && !form.identificacion.hasError('required') && !form.identificacion.hasError('pattern')"> La identificación debe tener mínimo 6 dígitos</div>
+            <div *ngIf="form.apellidos.hasError('maxlength') && !form.identificacion.hasError('pattern')">Ha superado la cantidad de dígitos para la identificación</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="(!clientesFormulario.valid) ? true : false" type="submit" class="btn btn-primary">Registrar</button>
+    </div>
+</form>
