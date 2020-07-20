@@ -76,7 +76,7 @@ export class ClientesListarComponent implements OnInit, AfterViewInit {
           {
             data: 'acciones', title: 'Acciones', defaultContent: `
               <button title="Editar" class="editar btn btn-primary"><i class="fas fa-pencil-alt"></i></button>
-              <button title="Eliminar" class="eliminar btn btn-primary"><i class="fas fa-trash"></i></button>
+              <!--<button title="Eliminar" class="eliminar btn btn-primary"><i class="fas fa-trash"></i></button>-->
             `
           },
         ],

@@ -5,26 +5,67 @@
     <div class="card-body">
         <form [formGroup]="creditosFormulario" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="id_cliente">Número de identificación del cliente:</label>
-                <!--<input formControlName="id_cliente" />-->
-                <ng-select (search)="getBusquedas($event)" [items]="clientes" bindLabel="nombre" autofocus bindValue="id" formControlName="id_cliente"></ng-select>
-                <!--<ng-select [items]="clientes" bindLabel="title" dropdownPosition="auto" bindValue="id" labelForId="nombres" placeholder="Selecciona el cliente" [virtualScroll]="true" formControlName="id_cliente">
-                    <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
-                        <div><span>Nombre </span><span>{{item.nombres}}</span></div>
-                        <small><b>Id:</b> {{item.identificacion}} | <b>UserId:</b> {{item.id_tipo_identificacion}}</small>
+                <label for="cliente">Identificación del cliente:</label>
+                <div class="ng-autocomplete w-100 position-relative">
+                    <app-spinner *ngIf="loading"></app-spinner>
+                    <ng-autocomplete (inputCleared)="clearCliente()" [data]="clientes" [searchKeyword]="keyword" (selected)='selectedCliente($event)' formControlName="cliente" [initialValue]="" placeholder="Selecciona el cliente por el número de cédula" historyIdentifier="clientes"
+                        historyHeading="Clientes recientemente seleccionados" notFoundText="Not found" [notFoundTemplate]="notFoundTemplate" [itemTemplate]="itemTemplate" [ngClass]="{ 'is-invalid': form.cliente.invalid && (form.cliente.dirty || form.cliente.touched)}">
+                    </ng-autocomplete>
+
+                    <ng-template #itemTemplate let-item>
+                        <a [innerHTML]="item.identificacion  + ': '+item.nombres + ' ' + item.apellidos"></a>
                     </ng-template>
-                </ng-select>-->
-            </div>
-            <!--div class="form-group">
-                <label for="nombres">Nombres:</label>
-                <input type="text" class="form-control" id="nombres" formControlName="nombres" [ngClass]="{ 'is-invalid': form.nombres.invalid && (form.nombres.dirty || form.nombres.touched)}">
-                <div *ngIf="form.nombres.errors" class="invalid-feedback">
-                    <div *ngIf="form.nombres.hasError('required')">El nombre no puede estar vacío</div>
-                    <div *ngIf="form.nombres.hasError('pattern')">Nombre Inválido</div>
-                    <div *ngIf="form.nombres.hasError('minlength') && !form.nombres.hasError('required') && !form.nombres.hasError('pattern')">El nombre debe contener mínimo 3 caracteres</div>
-                    <div *ngIf="form.nombres.hasError('maxlength') && !form.nombres.hasError('pattern')">Ha superado la cantidad de caracteres para el nombre</div>
+
+                    <ng-template #notFoundTemplate let-notFound>
+                        <div>No se encuentra ningun registro</div>
+                    </ng-template>
                 </div>
-            </div-->
+            </div>
+            <ng-container *ngIf="nombres && apellidos">
+                <div class="form-group">
+                    <label for="nombres">Nombres del cliente:</label>
+                    <input type="text" class="form-control" value="{{nombres}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellidos">Apellidos del cliente:</label>
+                    <input type="text" class="form-control" value="{{apellidos}}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_tipo_credito">Tipo de Credito:</label>
+                    <ng-select [items]="tiposCredito" (change)='selectTipoCredito($event)' [virtualScroll]="true" bindLabel="tipo" bindValue="id" placeholder="Seleccione un tipo de crédito" required formControlName="id_tipo_credito" id="id_tipo_credito" [ngClass]="{ 'is-invalid': form.id_tipo_credito.invalid && (form.id_tipo_credito.dirty || form.id_tipo_credito.touched)}">
+                    </ng-select>
+                    <div *ngIf="form.id_tipo_credito.errors" class="invalid-feedback">
+                        <div *ngIf="form.id_tipo_credito.hasError('required')">Selecciona un tipo de crédito</div>
+                    </div>
+                </div>
+
+                <ng-container *ngIf="form.id_tipo_credito.value">
+                    <div class="form-group">
+                        <label for="monto">Monto</label>
+                        <input [cleave]="{numeral: true, numeralThousandsGroupStyle: 'thousand', prefix: '$' }" type="text" class="form-control" formControlName="monto" (focusout)="actualizarMonto($event.target.value)" [ngClass]="{ 'is-invalid': form.monto.invalid && (form.monto.dirty || form.monto.touched)}">
+                        <div *ngIf="form.monto.errors" class="invalid-feedback">
+                            <div *ngIf="form.monto.hasError('required')">Escoge un monto</div>
+                            <div *ngIf="form.monto.hasError('pattern')">Monto Incorrecto</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customRange3">Escoje el valor:</label>
+                        <ng5-slider [(value)]="monto" (valueChange)="actualizarMonto($event)" [options]="opciones"></ng5-slider>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha_limite_pago"> Fecha Límite de Pago:</label>
+                        <input type="text" class="form-control" formControlName="fecha_limite_pago" readonly/>
+                    </div>
+
+                    <div class="form-group">
+                        <button [disabled]="(!creditosFormulario.valid) ? true : false" type="submit" class="btn btn-primary">Registrar</button>
+                    </div>
+                </ng-container>
+            </ng-container>
         </form>
     </div>
 </div>

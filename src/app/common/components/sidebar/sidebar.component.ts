@@ -39,7 +39,9 @@ import { Menus } from './menus';
       <hr class="sidebar-divider">
     </ul>
   `,
-  styles: [`.logo img{ filter: brightness(10);}`],
+  styles: [`
+    .logo img{ filter: brightness(10);}
+  `],
   providers: [SidebarService]
 })
 export class SidebarComponent implements OnInit {
@@ -51,7 +53,7 @@ export class SidebarComponent implements OnInit {
     this.getMenus();
   }
 
-  getMenus(): void{
+  getMenus(): void {
     this.sidebarService.listarMenu().subscribe((menus) => {
       this.menus = menus;
     });

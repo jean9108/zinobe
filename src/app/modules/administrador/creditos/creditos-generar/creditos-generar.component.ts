@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TiposCredito } from 'src/app/common/interfaces/tipos-creditos';
 import { map, startWith, debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
 import { Cliente } from '../../../../common/interfaces/cliente';
+import { NumeralPipe } from 'ngx-numeral';
+import { Options } from 'ng5-slider';
 
 @Component({
   selector: 'app-creditos-generar',
@@ -18,17 +20,28 @@ export class CreditosGenerarComponent implements OnInit {
   public error: string;
   public loading: boolean;
   public clientes: Cliente[];
+  public keyword = 'identificacion';
+  public nombres: string;
+  public apellidos: string;
+  public opciones: Options;
+  public monto = 0;
+  public fechaPago: string;
+
 
   constructor(private creditosGenerarService: CreditosGenerarService) { }
 
   ngOnInit(): void {
     this.construirFormulario();
+    this.getBusquedasCliente();
     this.getTipoCredito();
   }
 
   construirFormulario(): void {
     this.creditosFormulario = new FormBuilder().group({
       id_cliente: [
+        ''
+      ],
+      cliente: [
         '',
         {
           Validators: [
@@ -54,49 +67,35 @@ export class CreditosGenerarComponent implements OnInit {
         }
       ],
       fecha_limite_pago: [
-        '',
+        '2020-12-31 20:00:00',
         {
           Validators: [
             Validators.required
-          ]
-        }
-      ],
-      estado_credito: [
-        '',
-        {
-          Validator: [
-            Validators.required,
-            Validators.pattern('^[A-Z]*$'),
-          ]
-        }
-      ],
-      pago_credito: [
-        '',
-        {
-          Validator: [
-            Validators.required,
-            Validators.pattern('^[A-Z]*$'),
           ]
         }
       ]
     });
   }
 
-  getBusquedas(busqueda): void {
-    const valorBusqueda = busqueda.term;
-
-    this.creditosGenerarService.buscarClientes(valorBusqueda).pipe(
+  getBusquedasCliente(): void {
+    this.creditosFormulario.get('cliente').valueChanges.pipe(
       debounceTime(500),
       tap(() => {
-        this.error = '';
         this.loading = true;
+        this.error = '';
       }),
-      finalize(() => {
-        this.loading = false;
-      })
+      switchMap(value =>
+        this.creditosGenerarService.buscarClientes(value)
+        .pipe(
+          finalize(() => {
+            this.loading = false;
+          })
+        ),
+      )
     ).subscribe(data => {
       this.error = '';
-      this.clientes = [...data];
+      this.clientes = data;
+      this.loading = false;
     });
   }
 
@@ -106,12 +105,49 @@ export class CreditosGenerarComponent implements OnInit {
     });
   }
 
+  clearCliente() {
+    this.nombres = this.apellidos = '';
+  }
+
+  selectedCliente(cliente) {
+    this.nombres = cliente.nombres;
+    this.apellidos = cliente.apellidos;
+    this.creditosFormulario.patchValue({
+      id_cliente: cliente.id
+    });
+  }
+
+  selectTipoCredito(tipo) {
+    if (tipo !== undefined) {
+      this.opciones = {
+        floor: tipo.valor_minimo,
+        ceil: tipo.valor_maximo,
+        step: 500000,
+        showTicks: true,
+        readOnly: false,
+        translate: (value: number): string => {
+          return new NumeralPipe(value).format('$0,0.00');
+        }
+      };
+    }
+  }
+
+  actualizarMonto(monto) {
+    this.monto = (typeof monto === 'number') ? monto : Number(monto.replace(/[^0-9.-]+/g, ''));
+    this.creditosFormulario.patchValue({ monto });
+  }
+
   get form() {
     return this.creditosFormulario.controls;
   }
 
   onSubmit(): void {
-    console.log(this.creditosFormulario.value);
-  }
+    if (this.creditosFormulario.valid === true ) {
+      const data = this.creditosFormulario.value;
+      this.creditosGenerarService.generarCredito(data).then((response) => {
+        console.log(response);
+      });
+    }
+}
 
 }

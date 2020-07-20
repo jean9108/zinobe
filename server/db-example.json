@@ -1,15 +1,47 @@
 {
     "menus": [{
-        "id": 1,
-        "nombre": "Clientes",
-        "url": "/clientes",
-        "id_padre": ""
-    }, {
-        "id": 2,
-        "nombre": "Creditos",
-        "url": "/creditos",
-        "id_padre": ""
-    }],
+            "nombre": "Clientes",
+            "icon": "fas fa-users",
+            "url": "",
+            "submenu": [{
+                    "nombre": "Ver Clientes",
+                    "icon": "fas fa-address-book",
+                    "url": "clientes"
+                },
+                {
+                    "nombre": "Registrar Cliente",
+                    "icon": "fas fa-user-plus",
+                    "url": "clientes/registrar"
+                }
+            ]
+        },
+        {
+            "nombre": "Creditos",
+            "icon": "fas fa-funnel-dollar",
+            "url": "creditos",
+            "submenu": [{
+                    "nombre": "Solicitar",
+                    "icon": "fas fa-money-check-alt",
+                    "url": "creditos"
+                },
+                {
+                    "nombre": "Aprobados",
+                    "icon": "fas fa-user-check",
+                    "url": "creditos/aprobados"
+                },
+                {
+                    "nombre": "Rechazados",
+                    "icon": "fas fa-user-times",
+                    "url": "creditos/rechazados"
+                },
+                {
+                    "nombre": "Pagos",
+                    "icon": "fas fa-file-invoice-dollar",
+                    "url": "creditos/aprobados"
+                }
+            ]
+        }
+    ],
     "bancos": [{
         "id": 1,
         "nombre": "Zinobe",
@@ -131,6 +163,60 @@
             "id": 10
         }
     ],
-    "creditos": [],
+    "creditos": [{
+            "id": 1,
+            "id_cliente": 1,
+            "id_tipo_credito": 1,
+            "monto": 2000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "APROBADO",
+            "pago_credito": "PENDIENTE"
+        },
+        {
+            "id": 2,
+            "id_cliente": 1,
+            "id_tipo_credito": 1,
+            "monto": 5000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "APROBADO",
+            "pago_credito": "PENDIENTE"
+        },
+        {
+            "id": 3,
+            "id_cliente": 1,
+            "id_tipo_credito": 1,
+            "monto": 3000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "APROBADO",
+            "pago_credito": "PENDIENTE"
+        },
+        {
+            "id": 4,
+            "id_cliente": 2,
+            "id_tipo_credito": 1,
+            "monto": 2000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "RECHAZADO",
+            "pago_credito": "PENDIENTE"
+        },
+        {
+            "id": 5,
+            "id_cliente": 1,
+            "id_tipo_credito": 2,
+            "monto": 5000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "RECHAZADO",
+            "pago_credito": "PENDIENTE"
+        },
+        {
+            "id": 6,
+            "id_cliente": 1,
+            "id_tipo_credito": 2,
+            "monto": 3000000,
+            "fecha_limite_pago": "2020-12-31 20:00:00",
+            "estado_credito": "RECHAZADO",
+            "pago_credito": "PENDIENTE"
+        }
+    ],
     "pagos-creditos": []
 }

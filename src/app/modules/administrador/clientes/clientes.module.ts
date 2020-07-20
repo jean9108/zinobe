@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ClientesComponent } from './clientes.component';
 import { ClientesRegistrarComponent } from './clientes-registrar/clientes-registrar.component';
 import { ClientesListarComponent } from './clientes-listar/clientes-listar.component';
 import { ClientesEditarComponent } from './clientes-editar/clientes-editar.component';
 import { ClientesFormularioComponent } from './clientes-formulario/clientes-formulario.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ClientesService } from './clientes.service';
-import { SpinnerComponent } from '../../../common/components/spinner/spinner.component';
-import { ModalComponent } from '../../../common/components/modal/modal.component';
+import { SharedModule } from 'src/app/common/modules/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,15 +14,11 @@ import { ModalComponent } from '../../../common/components/modal/modal.component
     ClientesRegistrarComponent,
     ClientesListarComponent,
     ClientesEditarComponent,
-    ClientesFormularioComponent,
-    SpinnerComponent,
-    ModalComponent
+    ClientesFormularioComponent
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     ClientesRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
   ],
   providers: [
     ClientesService

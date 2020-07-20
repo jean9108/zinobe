@@ -470,6 +470,10 @@ mark,
     background-color: #fcf8e3;
 }
 
+.default-cursor {
+    cursor: default !important;
+}
+
 .list-unstyled {
     padding-left: 0;
     list-style: none;

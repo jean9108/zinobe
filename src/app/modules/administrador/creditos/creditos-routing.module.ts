@@ -5,7 +5,6 @@ import { CreditosGenerarComponent } from './creditos-generar/creditos-generar.co
 import { CreditosAprobadosComponent } from './creditos-aprobados/creditos-aprobados.component';
 import { CreditosRechazadosComponent } from './creditos-rechazados/creditos-rechazados.component';
 
-
 const routes: Routes = [
   { path: '', component: CreditosComponent, children:
     [
