@@ -17,6 +17,12 @@ Dentro del directorio raíz, ejecutar los siguientes comandos:
 3. Inicialización del servidor fake creado con json-server: `npm run json:server`
 4. Inicialización del proyecto en modo desarrollo: `ng serve`
 
+## Variables de entorno
+
+Se encuentran alojadas en el archivo `src/app/common/enviroment/index.ts`
+
+* `baseApiUrl` - Define la url base de la API generada por json-server (Por defecto es `http://localhost:3000`)
+
 ## Mocks de datos
 
 * La estructura de datos de json-server está contenida en `server/db.json`
