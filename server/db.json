@@ -1,99 +1,127 @@
 {
-    "menus": [{
-            "nombre": "Clientes",
-            "icon": "fas fa-users",
-            "url": "",
-            "submenu": [{
-                    "nombre": "Ver Clientes",
-                    "icon": "fas fa-address-book",
-                    "url": "clientes"
-                },
-                {
-                    "nombre": "Registrar Cliente",
-                    "icon": "fas fa-user-plus",
-                    "url": "clientes/registrar"
-                }
-            ]
+  "menus": [
+    {
+      "nombre": "Clientes",
+      "icon": "fas fa-users",
+      "url": "",
+      "submenu": [
+        {
+          "nombre": "Ver Clientes",
+          "icon": "fas fa-address-book",
+          "url": "clientes"
         },
         {
-            "nombre": "Créditos",
-            "icon": "fas fa-funnel-dollar",
-            "url": "creditos",
-            "submenu": [{
-                    "nombre": "Solicitar",
-                    "icon": "fas fa-money-check-alt",
-                    "url": "creditos"
-                },
-                {
-                    "nombre": "Aprobados",
-                    "icon": "fas fa-user-check",
-                    "url": "creditos/aprobados"
-                },
-                {
-                    "nombre": "Rechazados",
-                    "icon": "fas fa-user-times",
-                    "url": "creditos/rechazados"
-                }
-            ]
+          "nombre": "Registrar Cliente",
+          "icon": "fas fa-user-plus",
+          "url": "clientes/registrar"
         }
-    ],
-    "bancos": [{
-        "id": 1,
-        "nombre": "Zinobe",
-        "capital_inicial": 1000000000,
-        "capital_prestado": 2000000,
-        "capital_final": 998000000
-    }],
-    "tipos-identificacion": [{
-            "id": 1,
-            "tipo": "Cédula de Ciudadanía"
+      ]
+    },
+    {
+      "nombre": "Créditos",
+      "icon": "fas fa-funnel-dollar",
+      "url": "creditos",
+      "submenu": [
+        {
+          "nombre": "Solicitar",
+          "icon": "fas fa-money-check-alt",
+          "url": "creditos"
         },
         {
-            "id": 2,
-            "tipo": "Nit"
+          "nombre": "Aprobados",
+          "icon": "fas fa-user-check",
+          "url": "creditos/aprobados"
         },
         {
-            "id": 3,
-            "tipo": "Pasaporte"
+          "nombre": "Rechazados",
+          "icon": "fas fa-user-times",
+          "url": "creditos/rechazados"
         }
-    ],
-    "tipos-creditos": [{
-            "id": 1,
-            "id_banco": 1,
-            "tipo": "Libre Inversión",
-            "valor_minimo": 5000000,
-            "valor_maximo": 20000000
-        },
-        {
-            "id": 2,
-            "id_banco": 1,
-            "tipo": "Vivienda",
-            "valor_minimo": 3000000,
-            "valor_maximo": 25000000
-        },
-        {
-            "id": 3,
-            "id_banco": 1,
-            "tipo": "Crédito de emergencia",
-            "valor_minimo": 1000000,
-            "valor_maximo": 3000000
-        }
-    ],
-    "clientes": [{
-        "nombres": "Pepita",
-        "apellidos": "Lopez",
-        "id_tipo_identificacion": "1",
-        "email": "a@a.com",
-        "identificacion": "1111111111",
-        "id": 1
-    }],
-    "creditos": [{
-        "id": 1,
-        "id_cliente": 1,
-        "id_tipo_credito": 1,
-        "monto": 2000000,
-        "fecha_limite_pago": "2020-12-31 20:00:00",
-        "estado_credito": "APROBADO",
-        "pago_credito": "PENDIENTE"
-    }]
+      ]
+    }
+  ],
+  "bancos": [
+    {
+      "id": 1,
+      "nombre": "Zinobe",
+      "capital_inicial": 1000000000,
+      "capital_prestado": 5000000,
+      "capital_final": 995000000
+    }
+  ],
+  "tipos-identificacion": [
+    {
+      "id": 1,
+      "tipo": "Cédula de Ciudadanía"
+    },
+    {
+      "id": 2,
+      "tipo": "Nit"
+    },
+    {
+      "id": 3,
+      "tipo": "Pasaporte"
+    }
+  ],
+  "tipos-creditos": [
+    {
+      "id": 1,
+      "id_banco": 1,
+      "tipo": "Libre Inversión",
+      "valor_minimo": 5000000,
+      "valor_maximo": 20000000
+    },
+    {
+      "id": 2,
+      "id_banco": 1,
+      "tipo": "Vivienda",
+      "valor_minimo": 3000000,
+      "valor_maximo": 25000000
+    },
+    {
+      "id": 3,
+      "id_banco": 1,
+      "tipo": "Crédito de emergencia",
+      "valor_minimo": 1000000,
+      "valor_maximo": 3000000
+    }
+  ],
+  "clientes": [
+    {
+      "nombres": "Pepita",
+      "apellidos": "Lopez",
+      "id_tipo_identificacion": "1",
+      "email": "a@a.com",
+      "identificacion": "1111111111",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "nombres": "Yenny Paola",
+      "apellidos": "Lopez Meneses",
+      "id_tipo_identificacion": "1",
+      "email": "supremapolita@hotmail.com",
+      "identificacion": "1032133789"
+    }
+  ],
+  "creditos": [
+    {
+      "id": 1,
+      "id_cliente": 1,
+      "id_tipo_credito": 1,
+      "monto": 2000000,
+      "fecha_limite_pago": "2020-12-31 20:00:00",
+      "estado_credito": "APROBADO",
+      "pago_credito": "PENDIENTE"
+    },
+    {
+      "id_cliente": 2,
+      "id_tipo_credito": 2,
+      "monto": "$3,000,000",
+      "fecha_limite_pago": "2020-12-31 20:00:00",
+      "estado_credito": "APROBADO",
+      "pago_credito": "PENDIENTE",
+      "id": 2
+    }
+  ]
 }

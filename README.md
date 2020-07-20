@@ -2,7 +2,19 @@
 
 Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
-## Modelo De Datos
+## Vista previa de la aplicación Web
+
+ 1. Solicitud de crédito
+ ![Alt text](readme/images/preview1.png "Title")
+ 2. Aprobación de cŕédito
+  ![Alt text](readme/images/preview2.png "Title")
+ 3. Lista de créditos aprobados y pendientes por pagar
+ ![Alt text](readme/images/preview3.png "Title")
+
+ 3. Lista de créditos rechazados
+ ![Alt text](readme/images/preview4.png "Title")
+
+## Modelo de datos
 
 ![Alt text](readme/images/modelo-datos.png "Title")
 * Se realizó este modelo de bases de datos como una guía para la creación de los mocks en json-server.
@@ -43,5 +55,5 @@ Se encuentran alojadas en el archivo `src/app/common/enviroment/index.ts`
 
 6. En el menú `Créditos\Rechazados` se muestra el listado de créditos no aprobados que se registraron desde el módulo de solicitar crédito.
 
-## Nota Importante
+## Nota importante
 * Por cuestiones de tiempo, no se implementó la validación para evitar registros duplicados de clientes. Para lo cuál al momento de probar la aplicación, es importante evitar registrar clientes con un mismo número de identificación para obtener los resultados esperados dentro de la prueba técnica.
