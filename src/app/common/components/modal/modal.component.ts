@@ -9,7 +9,7 @@ declare var $: $;
     <div #modal class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div class="modal-header {{headerClasses}}">
             <h5 class="modal-title">{{title}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
@@ -20,7 +20,7 @@ declare var $: $;
           </div>
           <div class="modal-footer">
             <button (click)="runAcceptFunction()" type="button" class="btn btn-primary">Aceptar</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button *ngIf="hideCancel === false" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
           </div>
         </div>
       </div>
@@ -31,6 +31,8 @@ export class ModalComponent implements OnInit, AfterViewInit {
   @ViewChild('modal', {read: ElementRef}) modalElementRef: ElementRef;
   public title: string;
   public message: string;
+  public headerClasses: string;
+  public hideCancel: boolean;
   private modal: any;
   private acceptFunction: any;
 
@@ -64,6 +66,14 @@ export class ModalComponent implements OnInit, AfterViewInit {
 
   accept(acceptFunction): void {
     this.acceptFunction = acceptFunction;
+  }
+
+  setHeaderClasses(classes): void {
+    this.headerClasses = classes;
+  }
+
+  setHideCancel(flag): void {
+    this.hideCancel = flag;
   }
 
   runAcceptFunction(): void {

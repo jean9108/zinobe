@@ -16,7 +16,7 @@
             ]
         },
         {
-            "nombre": "Creditos",
+            "nombre": "Créditos",
             "icon": "fas fa-funnel-dollar",
             "url": "creditos",
             "submenu": [{
@@ -33,11 +33,6 @@
                     "nombre": "Rechazados",
                     "icon": "fas fa-user-times",
                     "url": "creditos/rechazados"
-                },
-                {
-                    "nombre": "Pagos",
-                    "icon": "fas fa-file-invoice-dollar",
-                    "url": "creditos/aprobados"
                 }
             ]
         }
@@ -45,7 +40,9 @@
     "bancos": [{
         "id": 1,
         "nombre": "Zinobe",
-        "capital": 1000000000
+        "capital_inicial": 1000000000,
+        "capital_prestado": 2000000,
+        "capital_final": 998000000
     }],
     "tipos-identificacion": [{
             "id": 1,
@@ -83,140 +80,20 @@
         }
     ],
     "clientes": [{
-            "nombres": "Pepita",
-            "apellidos": "Lopez",
-            "id_tipo_identificacion": "1",
-            "email": "a@a.com",
-            "identificacion": "1111111111",
-            "id": 1
-        },
-        {
-            "nombres": "Joana Marcela",
-            "apellidos": "Garcia",
-            "id_tipo_identificacion": "1",
-            "email": "joanamar_9108@hotmail.com",
-            "identificacion": "1031133789",
-            "id": 2
-        },
-        {
-            "nombres": "Juana",
-            "apellidos": "Lopez",
-            "id_tipo_identificacion": "1",
-            "email": "juana@gmail.com",
-            "identificacion": "80741502",
-            "id": 3
-        },
-        {
-            "nombres": "Yenny Paola",
-            "apellidos": "Lopez Meneses",
-            "id_tipo_identificacion": "3",
-            "email": "supremapolita@hotmail.com",
-            "identificacion": "PAP12345",
-            "id": 4
-        },
-        {
-            "nombres": "Mauricio Rivera",
-            "apellidos": "Franco",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "107274",
-            "id": 5
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "1072748306",
-            "id": 6
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "123456",
-            "id": 7
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "123456",
-            "id": 8
-        },
-        {
-            "nombres": "Mauricio",
-            "apellidos": "Rivera",
-            "id_tipo_identificacion": "1",
-            "email": "mauriver21@gmail.com",
-            "identificacion": "1072748306",
-            "id": 9
-        },
-        {
-            "nombres": "Joana Marcela",
-            "apellidos": "Garcia M",
-            "id_tipo_identificacion": "1",
-            "email": "joana9108@gmail.com",
-            "identificacion": "1031133789",
-            "id": 10
-        }
-    ],
+        "nombres": "Pepita",
+        "apellidos": "Lopez",
+        "id_tipo_identificacion": "1",
+        "email": "a@a.com",
+        "identificacion": "1111111111",
+        "id": 1
+    }],
     "creditos": [{
-            "id": 1,
-            "id_cliente": 1,
-            "id_tipo_credito": 1,
-            "monto": 2000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "APROBADO",
-            "pago_credito": "PENDIENTE"
-        },
-        {
-            "id": 2,
-            "id_cliente": 1,
-            "id_tipo_credito": 1,
-            "monto": 5000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "APROBADO",
-            "pago_credito": "PENDIENTE"
-        },
-        {
-            "id": 3,
-            "id_cliente": 1,
-            "id_tipo_credito": 1,
-            "monto": 3000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "APROBADO",
-            "pago_credito": "PENDIENTE"
-        },
-        {
-            "id": 4,
-            "id_cliente": 2,
-            "id_tipo_credito": 1,
-            "monto": 2000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "RECHAZADO",
-            "pago_credito": "PENDIENTE"
-        },
-        {
-            "id": 5,
-            "id_cliente": 1,
-            "id_tipo_credito": 2,
-            "monto": 5000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "RECHAZADO",
-            "pago_credito": "PENDIENTE"
-        },
-        {
-            "id": 6,
-            "id_cliente": 1,
-            "id_tipo_credito": 2,
-            "monto": 3000000,
-            "fecha_limite_pago": "2020-12-31 20:00:00",
-            "estado_credito": "RECHAZADO",
-            "pago_credito": "PENDIENTE"
-        }
-    ],
-    "pagos-creditos": []
+        "id": 1,
+        "id_cliente": 1,
+        "id_tipo_credito": 1,
+        "monto": 2000000,
+        "fecha_limite_pago": "2020-12-31 20:00:00",
+        "estado_credito": "APROBADO",
+        "pago_credito": "PENDIENTE"
+    }]
 }

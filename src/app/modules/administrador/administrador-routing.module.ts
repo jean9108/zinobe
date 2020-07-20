@@ -5,6 +5,7 @@ import { AdministradorComponent } from './administrador.component';
 
 const routes: Routes = [
   { path: '', component: AdministradorComponent, children: [
+      { path: '', redirectTo: 'creditos/aprobados', pathMatch: 'full' },
       { path: 'clientes', loadChildren: () => import('./clientes/clientes.module').then(m => m.ClientesModule) },
       { path: 'creditos', loadChildren: () => import('./creditos/creditos.module').then(m => m.CreditosModule) }
     ]

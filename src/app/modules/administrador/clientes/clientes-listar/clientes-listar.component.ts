@@ -11,7 +11,7 @@ declare var $: $;
 @Component({
   selector: 'app-clientes-listar',
   template: `
-  <app-modal #modal></app-modal>
+    <app-modal #modal></app-modal>
     <div class="card shadow mb-4">
       <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">Clientes registrados</h6>

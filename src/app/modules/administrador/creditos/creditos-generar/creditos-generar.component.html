@@ -1,3 +1,4 @@
+<app-modal #modal></app-modal>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Registrar un nuevo Credito</h6>
@@ -8,8 +9,8 @@
                 <label for="cliente">Identificación del cliente:</label>
                 <div class="ng-autocomplete w-100 position-relative">
                     <app-spinner *ngIf="loading"></app-spinner>
-                    <ng-autocomplete (inputCleared)="clearCliente()" [data]="clientes" [searchKeyword]="keyword" (selected)='selectedCliente($event)' formControlName="cliente" [initialValue]="" placeholder="Selecciona el cliente por el número de cédula" historyIdentifier="clientes"
-                        historyHeading="Clientes recientemente seleccionados" notFoundText="Not found" [notFoundTemplate]="notFoundTemplate" [itemTemplate]="itemTemplate" [ngClass]="{ 'is-invalid': form.cliente.invalid && (form.cliente.dirty || form.cliente.touched)}">
+                    <ng-autocomplete placeHolder="Buscar cliente" (inputCleared)="clearCliente()" [data]="clientes" [searchKeyword]="keyword" (selected)='selectedCliente($event)' formControlName="cliente" [initialValue]="" placeholder="Selecciona el cliente por el número de cédula"
+                        historyIdentifier="clientes" historyHeading="Clientes recientemente seleccionados" notFoundText="Not found" [notFoundTemplate]="notFoundTemplate" [itemTemplate]="itemTemplate" [ngClass]="{ 'is-invalid': form.cliente.invalid && (form.cliente.dirty || form.cliente.touched)}">
                     </ng-autocomplete>
 
                     <ng-template #itemTemplate let-item>
@@ -58,7 +59,7 @@
 
                     <div class="form-group">
                         <label for="fecha_limite_pago"> Fecha Límite de Pago:</label>
-                        <input type="text" class="form-control" formControlName="fecha_limite_pago" readonly/>
+                        <input type="text" class="form-control" formControlName="fecha_limite_pago" readonly />
                     </div>
 
                     <div class="form-group">

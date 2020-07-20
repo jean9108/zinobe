@@ -8,6 +8,7 @@ import { NotFoundComponent } from './common/components/not-found/not-found.compo
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './common/interceptors/api.interceptor';
+import { CommunicatorService } from './common/services/communicator.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ApiInterceptor } from './common/interceptors/api.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
       multi: true,
-    }
+    },
+    CommunicatorService
   ],
   bootstrap: [AppComponent]
 })

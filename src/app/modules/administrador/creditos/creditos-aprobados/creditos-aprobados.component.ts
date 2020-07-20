@@ -1,7 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ModalComponent } from '../../../../common/components/modal/modal.component';
 import { CreditosService } from '../creditos.service';
+import { CommunicatorService } from 'src/app/common/services/communicator.service';
 import { NumeralPipe } from 'ngx-numeral';
+import { CapitalChipComponent } from 'src/app/common/components/capital-chip/capital-chip.component';
 import $ from 'jquery';
 
 declare var $: $;
@@ -9,6 +11,7 @@ declare var $: $;
 @Component({
   selector: 'app-clientes-listar',
   template: `
+    <app-modal #modal></app-modal>
     <div class="card shadow mb-4">
       <div class="card-header py-3 bg-gradient-success">
           <h6 class="m-0 font-weight-bold text-white">Créditos aprobados</h6>
@@ -31,12 +34,16 @@ export class CreditosAprobadosComponent implements OnInit, AfterViewInit {
   public creditosTabla: any;
   public columnasTabla: any;
   public cargandoTabla: boolean;
+  private capitalChipComponent: CapitalChipComponent;
+  @ViewChild('modal') modal: ModalComponent;
 
   constructor(
-    private creditosService: CreditosService
+    private creditosService: CreditosService,
+    private communicator: CommunicatorService
   ) { }
 
   ngOnInit(): void {
+    this.capitalChipComponent = this.communicator.getCapitalChipComponent();
     this.cargandoTabla = true;
   }
 
@@ -59,8 +66,11 @@ export class CreditosAprobadosComponent implements OnInit, AfterViewInit {
         columns: this.procesarColumnas(),
         data: [],
         rowCallback: (row, data) => {
-          const botonEditar = $(row).children().last().find('.editar');
-          const botonEliminar = $(row).children().last().find('.eliminar');
+          const botonPazYSalvo = $(row).children().last().find('.paz-y-salvo');
+
+          botonPazYSalvo.on('click', () => {
+            this.cambiarEstadoPago(data, row);
+          });
         }
       }
     );
@@ -74,13 +84,13 @@ export class CreditosAprobadosComponent implements OnInit, AfterViewInit {
       { data: 'tipo_credito', title: 'Tipo de crédito', render: (data) => data.tipo },
       { data: 'monto', title: 'Monto solicitado', render: (data) => new NumeralPipe(data).format('$0,0.00') },
       { data: 'pago_credito', title: 'Estado de pago', render: (data) => {
-          if (data === 'FINALIZADO') {
+          if (data === 'PAGADO') {
             return `
               <span class="btn btn-success btn-icon-split default-cursor">
                 <span class="icon text-white-50">
                   <i class="fas fa-check"></i>
                 </span>
-                <span class="text">Finalizado</span>
+                <span class="text">Pagado</span>
               </span>
             `;
           }
@@ -98,6 +108,15 @@ export class CreditosAprobadosComponent implements OnInit, AfterViewInit {
 
           return ``;
         }
+      },
+      {
+        data: 'acciones', title: 'Acciones', render: (data, type, row) => {
+          if (row.pago_credito === 'PENDIENTE') {
+            return `<button title="Paz y salvo" class="paz-y-salvo btn btn-primary"><i class="fas fa-handshake"></i></button>`;
+          } else {
+            return `<button disabled title="No hay acciones que realizar" class="btn btn-primary">N/A</button>`;
+          }
+        }
       }
     ];
 
@@ -106,12 +125,26 @@ export class CreditosAprobadosComponent implements OnInit, AfterViewInit {
 
   cargarCreditos() {
     this.creditosService.listarCreditos('APROBADO').then((response) => {
-      console.log(response);
       this.creditos = response;
-      this.creditosTabla.clear().draw();
+      this.creditosTabla.clear().draw(false);
       this.creditosTabla.rows.add(this.creditos);
-      this.creditosTabla.columns.adjust().draw();
+      this.creditosTabla.columns.adjust().draw(false);
       this.cargandoTabla = false;
+    });
+  }
+
+  cambiarEstadoPago(data, row) {
+    this.modal.show();
+    this.modal.setTitle('Aviso de confirmación');
+    this.modal.setMessage('¿Está seguro que desea cambiar el estado del crédito a pagado?');
+
+    this.modal.accept(() => {
+      this.cargandoTabla = true;
+      this.creditosService.cambiarEstadoCreditoAPagado(data).then((response) => {
+        this.capitalChipComponent.actualizarCapital(response.capitalFinal);
+        this.cargarCreditos();
+        this.modal.hide();
+      });
     });
   }
 }

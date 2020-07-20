@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { CreditosGenerarService } from './creditos-generar.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CreditosGenerarService } from './creditos-generar.service';
+import { CommunicatorService } from 'src/app/common/services/communicator.service';
+import { ModalComponent } from '../../../../common/components/modal/modal.component';
 import { TiposCredito } from 'src/app/common/interfaces/tipos-creditos';
-import { map, startWith, debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
+import { debounceTime, tap, switchMap, finalize } from 'rxjs/operators';
 import { Cliente } from '../../../../common/interfaces/cliente';
 import { NumeralPipe } from 'ngx-numeral';
 import { Options } from 'ng5-slider';
+import { CapitalChipComponent } from 'src/app/common/components/capital-chip/capital-chip.component';
 
 @Component({
   selector: 'app-creditos-generar',
   templateUrl: './creditos-generar.component.html',
-  styleUrls: ['./creditos-generar.component.css'],
   providers: [CreditosGenerarService]
 })
 export class CreditosGenerarComponent implements OnInit {
 
+  @ViewChild('modal') modal: ModalComponent;
   public creditosFormulario: FormGroup;
   public tiposCredito: TiposCredito;
   public error: string;
@@ -26,11 +29,15 @@ export class CreditosGenerarComponent implements OnInit {
   public opciones: Options;
   public monto = 0;
   public fechaPago: string;
+  private capitalChipComponent: CapitalChipComponent;
 
-
-  constructor(private creditosGenerarService: CreditosGenerarService) { }
+  constructor(
+    private creditosGenerarService: CreditosGenerarService,
+    private communicator: CommunicatorService
+  ) { }
 
   ngOnInit(): void {
+    this.capitalChipComponent = this.communicator.getCapitalChipComponent();
     this.construirFormulario();
     this.getBusquedasCliente();
     this.getTipoCredito();
@@ -131,7 +138,6 @@ export class CreditosGenerarComponent implements OnInit {
       };
     }
   }
-
   actualizarMonto(monto) {
     this.monto = (typeof monto === 'number') ? monto : Number(monto.replace(/[^0-9.-]+/g, ''));
     this.creditosFormulario.patchValue({ monto });
@@ -145,7 +151,24 @@ export class CreditosGenerarComponent implements OnInit {
     if (this.creditosFormulario.valid === true ) {
       const data = this.creditosFormulario.value;
       this.creditosGenerarService.generarCredito(data).then((response) => {
-        console.log(response);
+        this.modal.show();
+        this.modal.setHideCancel(true);
+        this.modal.setTitle('Operación realizada');
+
+        if (response.error !== undefined) {
+          this.modal.setHeaderClasses('bg-gradient-danger text-white');
+          this.modal.setMessage(response.error);
+        }
+
+        if (response.success !== undefined) {
+          this.modal.setHeaderClasses('bg-gradient-success text-white');
+          this.modal.setMessage(response.success);
+          this.capitalChipComponent.actualizarCapital(response.capitalFinal);
+        }
+
+        this.creditosFormulario.reset();
+        this.clearCliente();
+        this.modal.accept(() => this.modal.hide());
       });
     }
 }
