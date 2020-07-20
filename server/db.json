@@ -42,7 +42,7 @@
         "nombre": "Zinobe",
         "capital_inicial": 1000000000,
         "capital_prestado": 2000000,
-        "capital_final": 1000000000
+        "capital_final": 998000000
     }],
     "tipos-identificacion": [{
             "id": 1,
@@ -94,6 +94,6 @@
         "monto": 2000000,
         "fecha_limite_pago": "2020-12-31 20:00:00",
         "estado_credito": "APROBADO",
-        "pago_credito": "PAGADO"
+        "pago_credito": "PENDIENTE"
     }]
 }

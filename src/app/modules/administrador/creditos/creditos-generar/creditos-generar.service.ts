@@ -31,7 +31,7 @@ export class CreditosGenerarService {
   }
 
   async cantidadCreditosAprobados(idCliente: number): Promise<number> {
-    const creditos = await this.http.get<any>('/creditos?id_cliente=' + idCliente + '&estado_like=APROBADO').toPromise();
+    const creditos = await this.http.get<any>('/creditos?id_cliente=' + idCliente + '&estado_credito_like=APROBADO').toPromise();
     return creditos.length;
   }
 
